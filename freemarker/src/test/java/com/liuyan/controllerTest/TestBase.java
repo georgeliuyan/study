@@ -38,7 +38,9 @@ public class TestBase{
 
     @Before
     public void init() {
+        //集成Web环境方式
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        //独立测试方式
 //        mockMvc = MockMvcBuilders.standaloneSetup(new FreeMarkerCtrl()).build();
         System.out.println("开始测试-----------------");
     }

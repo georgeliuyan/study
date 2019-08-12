@@ -11,6 +11,7 @@
     <modules>
         <module>abstracthandler</module>
         <module>freemarker</module>
+        <module>shiro</module>
     </modules>
 
     <parent>

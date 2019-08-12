@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+
+#  jpa:
+#    database: mysql
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+#      properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.MySQL5Dialect
+
+  thymeleaf:
+     cache: false
+     mode: LEGACYHTML5
