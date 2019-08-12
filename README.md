@@ -1,7 +1,7 @@
 # study
 springboot各类技术的学习
 
-# abstracthandler
+# 一、自定义处理器 abstracthandler
 abstracthandler实现了自定义注解类，来实现对方法的标记，通过bean获取的方式，调用不用的方法。
 
 1、创建HandleType自定义注解
@@ -32,5 +32,5 @@ public abstract class AbstractHandler {
 4、BeanTool：获取bean工具类
 5、ClassScaner：注解类扫描工具类
 
-# freemarker
+# 二、整合freemarker
 springboot整合freemarker，实现对静态资源的访问
