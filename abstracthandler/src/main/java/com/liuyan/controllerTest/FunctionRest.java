@@ -1,4 +1,4 @@
-package com.liuyan.controller;
+package com.liuyan.controllerTest;
 
 import com.liuyan.service.IFunction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api")
-public class Testrest {
+public class FunctionRest {
 
     @Autowired
     IFunction function;

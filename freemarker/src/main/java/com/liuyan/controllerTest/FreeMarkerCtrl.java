@@ -1,4 +1,4 @@
-package com.liuyan.controller;
+package com.liuyan.controllerTest;
 
 import com.liuyan.utils.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
