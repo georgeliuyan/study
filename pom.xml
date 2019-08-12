@@ -12,6 +12,7 @@
         <module>abstracthandler</module>
         <module>freemarker</module>
         <module>shiro</module>
+        <module>thymeleaf</module>
     </modules>
 
     <parent>
