@@ -50,11 +50,31 @@
 
         <!-- postgresql数据库驱动 start -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1206-jdbc42</version>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql-jdbc42</artifactId>
+            <version>9.4.1208-atlassian-hosted</version>
         </dependency>
         <!-- postgresql数据库驱动 end -->
+
+        <!-- jpa数据访问 start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- jpa数据访问 end -->
+
+        <!--hibernate映射数据库实体-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>5.0.12.Final</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>postgresql</artifactId>
+                    <groupId>postgresql</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
 

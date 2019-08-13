@@ -9,22 +9,15 @@
         <module name="abstracthandler" />
         <module name="freemarker" />
         <module name="shiro" />
-<<<<<<< HEAD
-=======
         <module name="thymeleaf" />
->>>>>>> origin/master
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="abstracthandler" target="1.8" />
       <module name="freemarker" target="1.8" />
       <module name="shiro" target="1.8" />
-<<<<<<< HEAD
       <module name="study" target="1.8" />
-=======
-      <module name="studycode" target="1.8" />
       <module name="thymeleaf" target="1.8" />
->>>>>>> origin/master
     </bytecodeTargetLevel>
   </component>
 </project>

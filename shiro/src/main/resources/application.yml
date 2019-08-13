@@ -1,21 +1,19 @@
+
 spring:
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/shiro
     username: postgres
     password: 123
     driver-class-name: org.postgresql.Driver
 
-#  jpa:
-#    database: mysql
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#      naming:
-#        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
-#      properties:
-#        hibernate:
-#          dialect: org.hibernate.dialect.MySQL5Dialect
-
-  thymeleaf:
-     cache: false
-     mode: LEGACYHTML5
+  #这里使用freemarker开发静态页面
+  freemarker:
+    suffix: .html
+    charset: utf-8
+server:
+  port: 19873
