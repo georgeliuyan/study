@@ -12,7 +12,7 @@
     <artifactId>shiro</artifactId>
 
     <dependencies>
-        <!--springboot 启动 start-->
+        <!-- springboot启动 start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -22,35 +22,39 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--springboot 启动 start-->
+        <!-- springboot启动 start -->
 
-        <!--静态资源模板类 start-->
+        <!-- 静态资源模板类 start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- 静态资源模板类 start -->
+
+        <!-- HTML扫描器和标签补偿器 start -->
         <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
             <version>1.9.22</version>
         </dependency>
-        <!--静态资源模板类 start-->
+        <!-- HTML扫描器和标签补偿器 end -->
 
-        <!--shiro 权限管理 start-->
+
+        <!-- shiro 权限管理 start -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
-        <!--shiro 权限管理 end-->
+        <!-- shiro 权限管理 end -->
 
-        <!--数据库驱动 start-->
+        <!-- postgresql数据库驱动 start -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1206-jdbc42</version>
         </dependency>
-        <!--数据库驱动 end-->
+        <!-- postgresql数据库驱动 end -->
     </dependencies>
 
 
