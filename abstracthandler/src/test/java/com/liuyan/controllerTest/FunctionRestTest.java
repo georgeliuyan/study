@@ -13,12 +13,6 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-/**
- * @class: study
- * @description: 测试类
- * @author: liuyan
- * @create: 2019-08-12 12:20
- **/
 
 public class FunctionRestTest extends TestBase {
 

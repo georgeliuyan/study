@@ -1,10 +1,9 @@
 package com.liuyan.handle;
-import com.liuyan.utils.BeanTool;
 
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
-public class HandlerContext {
+public class HandlerContext{
 
     private Map<String, Class> handlerMap;
 
@@ -12,12 +11,12 @@ public class HandlerContext {
         this.handlerMap = handlerMap;
     }
 
-    public AbstractHandler getInstance(String type) {
+    public Class getInstance(String type) {
         Class clazz = handlerMap.get(type);
         if (clazz == null) {
             throw new IllegalArgumentException("not found handler for type: " + type);
         }
-        return (AbstractHandler) BeanTool.getBean(clazz);
+        return clazz;
     }
 
 }

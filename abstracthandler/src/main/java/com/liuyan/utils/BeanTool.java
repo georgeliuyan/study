@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeanTool implements ApplicationContextAware {
 
-    private static ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext context) throws BeansException {
@@ -17,11 +17,11 @@ public class BeanTool implements ApplicationContextAware {
         }
     }
 
-    public static Object getBean(String name) {
+    public Object getBean(String name) {
         return applicationContext.getBean(name);
     }
 
-    public static <T> T getBean(Class<T> clazz) {
+    public <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
 
