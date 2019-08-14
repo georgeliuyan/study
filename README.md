@@ -34,3 +34,6 @@ public abstract class AbstractHandler {
 
 # 二、整合freemarker
 springboot整合freemarker，实现对静态资源的访问
+
+# 三、整合shiro实现用户权限控制
+
