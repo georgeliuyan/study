@@ -4,7 +4,7 @@ package com.liuyan.realm;
 import com.liuyan.pojo.*;
 import com.liuyan.repository.PermissionDao;
 import com.liuyan.repository.RoleDao;
-import com.liuyan.repository.RolePermissionDao;
+import com.liuyan.repository.RoleResourcePermissionDao;
 import com.liuyan.repository.UserRoleDao;
 import com.liuyan.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -33,7 +33,7 @@ public class UserRealm extends AuthorizingRealm {
     RoleDao roleDao;
 
     @Autowired
-    RolePermissionDao rolePermissionDao;
+    RoleResourcePermissionDao roleResourcePermissionDao;
 
     @Autowired
     UserRoleDao userRoleDao;
@@ -66,10 +66,9 @@ public class UserRealm extends AuthorizingRealm {
             for(UserRole userRole : userRoles){
                 Role role = roleDao.findById(userRole.getRoleId()).orElse(null);
                 rolesCollection.add(role.getName());
-                List<RolePermission> rolePermissions = rolePermissionDao.findByRoleId(role.getId());
-                for (RolePermission rolePermission : rolePermissions){
-                    Permission permission = permissionDao.findById(rolePermission.getPermissionId()).orElse(null);
-                    premissionCollection.add(permission.getUrl());
+                List<RoleResourcePermission> rrps = roleResourcePermissionDao.findByRoleId(role.getId());
+                for (RoleResourcePermission rrp : rrps){
+                    premissionCollection.add(rrp.getResourceIdent()+":"+rrp.getPermissionIdent());
                 }
                 info.addStringPermissions(premissionCollection);
             }

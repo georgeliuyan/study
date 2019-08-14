@@ -6,6 +6,8 @@
 
 package com.liuyan.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,6 +26,8 @@ public class Users {
     private String password;
 
     @Id
+    @GeneratedValue(generator = "autoid")
+    @GenericGenerator(name = "autoid", strategy = "uuid")
     @Column(name = "id", nullable = false, length = 255)
     public String getId() {
         return id;

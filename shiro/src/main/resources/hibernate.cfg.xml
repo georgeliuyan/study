@@ -6,12 +6,17 @@
   <session-factory>
     <property name="connection.url">jdbc:postgresql://localhost:5432/shiro</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
-    <mapping class="com.liuyan.pojo.Permission"/>
+      <mapping class="com.liuyan.pojo.Permission"/>
     <mapping class="com.liuyan.pojo.Role"/>
     <mapping class="com.liuyan.pojo.RolePermission"/>
     <mapping class="com.liuyan.pojo.UserRole"/>
     <mapping class="com.liuyan.pojo.Users"/>
-    <!-- <property name="connection.username"/> -->
+      <mapping class="com.liuyan.pojo.SystemUrl"/>
+      <mapping class="com.liuyan.pojo.SystemUrlPermission"/>
+      <mapping class="com.liuyan.pojo.RoleResourcePermission"/>
+      <mapping class="com.liuyan.pojo.ServiceResource"/>
+      <mapping class="com.liuyan.pojo.ResourcePermission"/>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

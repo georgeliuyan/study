@@ -6,10 +6,9 @@
 
 package com.liuyan.pojo;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 /**
  * @class: study
@@ -21,9 +20,11 @@ import javax.persistence.Id;
 public class Permission {
     private String id;
     private String name;
-    private String url;
+    private String descr;
 
     @Id
+    @GeneratedValue(generator = "autoid")
+    @GenericGenerator(name = "autoid", strategy = "uuid")
     @Column(name = "id", nullable = false, length = 255)
     public String getId() {
         return id;
@@ -44,13 +45,13 @@ public class Permission {
     }
 
     @Basic
-    @Column(name = "url", nullable = true, length = 100)
-    public String getUrl() {
-        return url;
+    @Column(name = "descr", nullable = true, length = 100)
+    public String getDescr() {
+        return descr;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setDescr(String url) {
+        this.descr = url;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class Permission {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (url != null ? !url.equals(that.url) : that.url != null) return false;
+        if (descr != null ? !descr.equals(that.descr) : that.descr != null) return false;
 
         return true;
     }
@@ -71,7 +72,7 @@ public class Permission {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + (descr != null ? descr.hashCode() : 0);
         return result;
     }
 }

@@ -6,10 +6,9 @@
 
 package com.liuyan.pojo;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +24,8 @@ public class Role {
     private String name;
 
     @Id
+    @GeneratedValue(generator = "autoid")
+    @GenericGenerator(name = "autoid", strategy = "uuid")
     @Column(name = "id", nullable = false, length = 50)
     public String getId() {
         return id;
