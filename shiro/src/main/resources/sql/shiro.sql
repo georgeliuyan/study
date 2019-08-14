@@ -41,11 +41,40 @@ SET default_with_oids = false;
 CREATE TABLE permission (
     id character varying(255) NOT NULL,
     name character varying(100) DEFAULT NULL::character varying,
-    url character varying(100) DEFAULT NULL::character varying
+    descr character varying(100) DEFAULT NULL::character varying
 );
 
 
 ALTER TABLE permission OWNER TO postgres;
+
+--
+-- Name: resource; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE resource (
+    id character varying(50) NOT NULL,
+    url_name character varying(100),
+    url_ident character varying(50)
+);
+
+
+ALTER TABLE resource OWNER TO postgres;
+
+--
+-- Name: resource_permission; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE resource_permission (
+    id character varying(50) NOT NULL,
+    resource_id character varying(50),
+    resource_ident character varying(100),
+    resource_url character varying(100),
+    permission_id character varying(50),
+    permission_ident character varying(100)
+);
+
+
+ALTER TABLE resource_permission OWNER TO postgres;
 
 --
 -- Name: role; Type: TABLE; Schema: public; Owner: postgres
@@ -60,17 +89,21 @@ CREATE TABLE role (
 ALTER TABLE role OWNER TO postgres;
 
 --
--- Name: role_permission; Type: TABLE; Schema: public; Owner: postgres
+-- Name: role_resource_permission; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE role_permission (
-    id character varying(255) NOT NULL,
-    role_id character varying(255) NOT NULL,
-    permission_id character varying(255) NOT NULL
+CREATE TABLE role_resource_permission (
+    id character varying(50) NOT NULL,
+    role_id character varying(50),
+    role_name character varying(100),
+    resource_id character varying(50),
+    permission_id character varying(50),
+    resource_ident character varying(100),
+    permission_ident character varying(100)
 );
 
 
-ALTER TABLE role_permission OWNER TO postgres;
+ALTER TABLE role_resource_permission OWNER TO postgres;
 
 --
 -- Name: user_role; Type: TABLE; Schema: public; Owner: postgres
@@ -102,9 +135,39 @@ ALTER TABLE users OWNER TO postgres;
 -- Data for Name: permission; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY permission (id, name, url) FROM stdin;
+COPY permission (id, name, descr) FROM stdin;
 1	用户中心	user:add
 2	会员中心	user:vip
+\.
+
+
+--
+-- Data for Name: resource; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY resource (id, url_name, url_ident) FROM stdin;
+40289fa36c8f88c6016c8f8a63150000	/main	192.168.31.35:/main
+40289fa36c8f88c6016c8f8a632e0002	/error/unAuth	192.168.31.35:/error/unAuth
+40289fa36c8f88c6016c8f8a63310004	/logout	192.168.31.35:/logout
+40289fa36c8f88c6016c8f8a63320006	/login	192.168.31.35:/login
+40289fa36c8f88c6016c8f8a63360008	/toLogin	192.168.31.35:/toLogin
+40289fa36c8f88c6016c8f8a6338000a	/user/index	192.168.31.35:/user/index
+40289fa36c8f88c6016c8f8a633a000c	/vip/index	192.168.31.35:/vip/index
+\.
+
+
+--
+-- Data for Name: resource_permission; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY resource_permission (id, resource_id, resource_ident, resource_url, permission_id, permission_ident) FROM stdin;
+40289fa36c8f88c6016c8f8a63210001	40289fa36c8f88c6016c8f8a63150000	\N	/main		authc
+40289fa36c8f88c6016c8f8a632e0003	40289fa36c8f88c6016c8f8a632e0002	\N	/error/unAuth		authc
+40289fa36c8f88c6016c8f8a63310005	40289fa36c8f88c6016c8f8a63310004	\N	/logout		authc
+40289fa36c8f88c6016c8f8a63360009	40289fa36c8f88c6016c8f8a63360008	\N	/toLogin		authc
+40289fa36c8f88c6016c8f8a6338000b	40289fa36c8f88c6016c8f8a6338000a	\N	/user/index		authc
+40289fa36c8f88c6016c8f8a633b000d	40289fa36c8f88c6016c8f8a633a000c	\N	/vip/index		authc
+40289fa36c8f88c6016c8f8a63330007	40289fa36c8f88c6016c8f8a63320006	\N	/login		anon
 \.
 
 
@@ -119,12 +182,10 @@ COPY role (id, name) FROM stdin;
 
 
 --
--- Data for Name: role_permission; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: role_resource_permission; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY role_permission (id, role_id, permission_id) FROM stdin;
-1	1	1
-2	2	2
+COPY role_resource_permission (id, role_id, role_name, resource_id, permission_id, resource_ident, permission_ident) FROM stdin;
 \.
 
 
@@ -158,11 +219,35 @@ ALTER TABLE ONLY permission
 
 
 --
+-- Name: resource_permission resource_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY resource_permission
+    ADD CONSTRAINT resource_permission_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: role role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY role
     ADD CONSTRAINT role_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: role_resource_permission system_url_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY role_resource_permission
+    ADD CONSTRAINT system_url_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: resource system_url_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY resource
+    ADD CONSTRAINT system_url_pkey PRIMARY KEY (id);
 
 
 --
